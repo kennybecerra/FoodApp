@@ -1,0 +1,6 @@
+.container {
+    display: grid;
+    grid-template-columns: [col-start] 100% [col-end];
+    grid-template-rows: [header-start] 100vh [header-end] 
+}
+

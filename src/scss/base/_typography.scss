@@ -1,0 +1,36 @@
+.heading-primary {
+
+    &--light,
+    &--dark {
+        font-size: 5.5rem;
+        text-transform: uppercase;
+    }
+
+    &--light { color: white;}
+    &--dark { color: black;}
+
+}
+
+.heading-secondary {
+
+    &--light,
+    &--dark {
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    &--light { color: white;}
+    &--dark { color: black;}
+}
+
+.heading-tertiary {
+
+    &--light,
+    &--dark {
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    &--light { color: white;}
+    &--dark { color: black;}
+}
