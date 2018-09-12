@@ -1,6 +1,11 @@
 
+// ABSTRACTS
+
+@import "abstracts/mixins";
+
 // BASE
 @import "base/base";
+@import "base/typography";
 @import "base/variables";
 
 // COMPONENTS
@@ -11,3 +16,4 @@
 
 // SECTION
 @import "section/header";
+@import "section/about";
