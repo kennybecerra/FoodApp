@@ -1,0 +1,78 @@
+.works {
+    grid-column: col-start / col-end;
+    grid-row: section-start 3 / section-end 3;
+    //margin: 4vw 0px;
+    padding: 4vw 0px;
+    background-color: #f4f4f4;
+
+    display: grid;
+    grid-template-columns: [col-start] 50% [col-mid] 50% [col-end];
+    grid-template-rows: [header-start] min-content [header-end phone-start] min-content [phone-end list-start] min-content[list-end];
+    grid-gap: 2rem;
+
+    @include ResponsiveMobileFirst(tab-port) {
+        
+        grid-template-rows: [header-start] 25% [header-end body-start] 75% [body-end];
+    }
+
+    &__header {
+        grid-column: col-start / col-end;
+        grid-row: header-start / header-end;
+        justify-self: center;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width:90%;
+        text-align: center;
+    }
+
+    &__phone {
+
+        grid-column: col-start / col-end;
+        grid-row: phone-start / phone-end;
+
+        @include ResponsiveMobileFirst(tab-port) {
+            grid-column: col-start / col-mid;
+            grid-row: body-start / body-end;
+        }
+    }
+
+    &__list {
+
+        grid-column: col-start / col-end;
+        grid-row: list-start / list-end;
+
+        justify-self: center;
+        width: 80%;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around; 
+        
+
+        @include ResponsiveMobileFirst(tab-port) {
+            grid-column: col-mid / col-end;
+            grid-row: body-start / body-end;
+        }
+    }
+}
+
+.listitem {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+    margin: 1vw 0px;
+
+    &__number {
+
+        font-size: calc(.5rem + 3vw);
+        border: .2rem solid var(--primary-color);
+        color: var(--primary-color);
+        padding: 1vw 2vw;
+        border-radius: 50%;
+        margin: 0px 1.5rem;
+    }
+}

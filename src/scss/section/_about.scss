@@ -8,6 +8,8 @@
     grid-template-rows: [header-start] 40% [header-end body-start] 60% [body-end];
     grid-row-gap: 2rem;
     justify-content: center;
+
+    padding: 5vw 0px 7vw 0px;
     @include ResponsiveMobileFirst(tab-port) {
        
     }
@@ -22,6 +24,7 @@
         align-items: center;
         justify-content: space-evenly;
         width:90%;
+        text-align: center;
 
     
         @include ResponsiveMobileFirst(tab-port) {
@@ -37,8 +40,8 @@
 
         display:grid;
         grid-template-columns: 100%;
-        grid-column-gap: 2vw;
-        margin:0px 4vw;
+        grid-column-gap: 3.5vw;
+        margin: 0px 3.5vw;
         //width: 90%;
 
         @include ResponsiveMobileFirst(tab-port) {
@@ -52,7 +55,7 @@
     width: 15%;
     height: 3px;
     border-radius: 15px;
-    margin: 2vw 0px 4vw 0px;
+    margin: 4vw 0px 4vw 0px;
 }
 
 .item {
@@ -65,7 +68,10 @@
     &__svg {
         fill: var(--primary-color);
         height: 10rem;
-        width: 35%;
+        width: 25%;
         align-self: center;
+        @include ResponsiveMobileFirst(tab-port) {
+            width: 35%;    
+        }
     }
 }

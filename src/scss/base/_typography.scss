@@ -36,7 +36,7 @@
         font-weight: 300;
         word-spacing: 2px;
         letter-spacing: 1px;
-        margin: 4vw 0px 2vw 0px;
+        //margin: 4vw 0px 2vw 0px;
 
         
 
@@ -93,7 +93,7 @@
         font-size:  calc(.3rem + 2.5vw);
         font-weight: 300;
         letter-spacing: 1px;
-        line-height: 2.6rem;
+        line-height: 2.8rem;
 
         @include ResponsiveMobileFirst(tab) {
             font-size: 1.8rem;            

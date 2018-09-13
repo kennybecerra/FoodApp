@@ -1,0 +1,29 @@
+.food {
+
+    grid-column: col-start / col-end;
+    grid-row: section-start 2 / section-end 2;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(min-content, 1fr));
+
+    &__container {
+
+        overflow: hidden;
+        background-color: #000;
+
+        &--image {
+            //height: 100%;
+            height: auto;
+            width: 100%;
+            opacity: .5;
+            object-fit: cover;
+            transition: all .5s;
+            transform: scale(1.2);
+
+            &:hover {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    }
+}
