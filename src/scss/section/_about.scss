@@ -6,10 +6,10 @@
     display: grid;
     grid-template-columns: [col-start] 100% [col-end];
     grid-template-rows: [header-start] 40% [header-end body-start] 60% [body-end];
-    grid-row-gap: 2rem;
+    grid-row-gap: 2vw;
     justify-content: center;
 
-    padding: 5vw 0px 7vw 0px;
+    padding: 5vw 0px 5vw 0px;
     @include ResponsiveMobileFirst(tab-port) {
        
     }
@@ -50,28 +50,22 @@
     }
 }
 
-.horizontal-line {
-    background-color: var(--primary-color);
-    width: 15%;
-    height: 3px;
-    border-radius: 15px;
-    margin: 4vw 0px 4vw 0px;
-}
 
 .item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    padding: 2rem 0px;
 
 
     &__svg {
         fill: var(--primary-color);
         height: 10rem;
-        width: 25%;
+        width: 20%;
         align-self: center;
         @include ResponsiveMobileFirst(tab-port) {
-            width: 35%;    
+            width: 25%;    
         }
     }
 }

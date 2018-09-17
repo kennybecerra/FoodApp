@@ -1,0 +1,39 @@
+.headerblock {
+
+    grid-column: col-start / col-end;
+    grid-row: header-start / header-end;
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    text-align: center;
+
+
+    @include ResponsiveMobileFirst(tab-port) {
+        width: 70%;         
+    }
+
+    &__line {
+        background-color: var(--primary-color);
+        width: 15%;
+        height: 2px;
+        border-radius: 15px;
+        margin: 4vw 0px;
+
+        @include ResponsiveMobileFirst(tab) {
+            margin: 2rem 0px;
+        }
+        @include ResponsiveMobileFirst(tab-port) {
+            margin: 2.5rem 0px;
+        }
+        @include ResponsiveMobileFirst(desktop) {
+            margin: 3rem 0px;
+        }
+        @include ResponsiveMobileFirst(big-desktop) {
+                      
+        }
+    }
+}

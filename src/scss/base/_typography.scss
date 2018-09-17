@@ -1,7 +1,8 @@
 .heading-primary {
 
     &--light,
-    &--dark {
+    &--dark,
+    &--color {
         font-size: calc(.4rem + 4vw);
         text-transform: uppercase;
         font-weight: 300;
@@ -24,14 +25,17 @@
 
     &--light { color: white;}
     &--dark { color:var(--font-color);}
+    &--color {color: var( --primary-color);}
 
 }
 
 .heading-secondary {
 
     &--light,
-    &--dark {
-        font-size: calc(.3rem + 3.5vw);
+    &--dark,
+    &--color {
+        //font-size: calc(.3rem + 3.5vw);
+        font-size: calc(.7rem + 2.33vw);
         text-transform: uppercase;
         font-weight: 300;
         word-spacing: 2px;
@@ -41,75 +45,85 @@
         
 
         @include ResponsiveMobileFirst(tab) {
-            font-size: calc(.6rem + 3vw);           
+            //font-size: calc(.6rem + 3vw);           
         }
         @include ResponsiveMobileFirst(tab-port) {
-            font-size: calc(1rem + 2.7vw);             
+            //font-size: calc(1rem + 2.7vw);  
+            font-size: calc(2rem + .88vw);           
         }
         @include ResponsiveMobileFirst(desktop) {
-            font-size: calc(1.4rem + 2.4vw);               
+            //font-size: calc(1.4rem + 2.4vw);               
         }
         @include ResponsiveMobileFirst(big-desktop) {
-            font-size: 4.8rem;            
+            font-size: 3.6rem;            
         }
     }
 
     &--light { color: white;}
     &--dark { color:var(--font-color);}
+    &--color {color: var( --primary-color);}
 }
 
 .heading-tertiary {
 
     &--light,
-    &--dark {
-        font-size: calc(.3rem + 3vw);
+    &--dark,
+    &--noUpper {
+        // 1.56 rem - 1.88 rem
+        font-size: calc(1.4rem + .533vw);
         text-transform: uppercase;
         font-weight: 300;
         margin: 1rem 0px;
 
         @include ResponsiveMobileFirst(tab) {
-            font-size: calc(.55rem + 2.5vw);          
+                     
         }
         @include ResponsiveMobileFirst(tab-port) {
-            font-size: calc(.7rem + 1.25vw);   
-              
+            // 1.75 rem - 2.4 rem
+            font-size: calc(1.1rem + .72vw);   
+             
         }
         @include ResponsiveMobileFirst(desktop) {
-            font-size: calc(.9rem + 1.25vw);            
+                        
         }
         @include ResponsiveMobileFirst(big-desktop) {
-            font-size: 3rem;            
+            font-size: 2.4rem;            
         }
     }
 
     &--light { color: white;}
     &--dark { color:var(--font-color);}
+    &--noUpper {
+        color: var(--font-color);
+        text-transform: none;}
 }
 
 .paragraph {
 
     &--light,
-    &--dark {
-        font-size:  calc(.3rem + 2.5vw);
+    &--dark,
+    &--color {
+        font-size:  calc(1.2rem + .67vw);
         font-weight: 300;
         letter-spacing: 1px;
-        line-height: 2.8rem;
+        line-height: 2rem;
 
         @include ResponsiveMobileFirst(tab) {
-            font-size: 1.8rem;            
+                       
         }
         @include ResponsiveMobileFirst(tab-port) {
-            font-size: 2rem;            
+            font-size:  calc(1rem + .67vw);          
         }
         @include ResponsiveMobileFirst(desktop) {
-            font-size: 2.2rem;            
+            font-size:  calc(1.4rem + .33vw);           
         }
         @include ResponsiveMobileFirst(big-desktop) {
-            font-size: 2.5rem;            
+            font-size: 2rem;           
         }        
     }
 
     &--light { color: white;}
     &--dark { color:var(--font-color);}
+    &--color {color: var( --primary-color);}
 
 }
