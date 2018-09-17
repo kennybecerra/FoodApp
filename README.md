@@ -1,4 +1,4 @@
-# CampingApp
+# FoodApp
 Fictional site about a food delivery company. This is a sample website showcasing skillset in Frontent Development. See the Web App [here](https://kennybecerra.github.io/FoodApp/)
 
 ## Description
