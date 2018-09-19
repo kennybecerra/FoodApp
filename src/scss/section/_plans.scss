@@ -57,12 +57,20 @@
         border-bottom: 1px solid var(--font-color-light);
         
 
-        &--svg {
+        &--svg,
+        &--svg-x {
             grid-column: col-start / col-mid;
             width: 100%;
             height: 2.5rem;
             justify-self: center;
             fill: var(--primary-color);
+
+        }
+
+        &--svg-x {
+            fill: transparent;
+            stroke: var(--primary-color);
+            stroke-width: 1;
         }
 
     }

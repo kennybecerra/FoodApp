@@ -29,7 +29,8 @@
         width: 70%;
 
         @include ResponsiveMobileFirst(tab-port) {
-            grid-template-columns: repeat(4, minmax(min-content, 1fr));     width: 100%;
+            grid-template-columns: repeat(4, minmax(min-content, 1fr));     
+            width: 100%;
         }
     }
 }
@@ -52,20 +53,26 @@
 
     &__detail {
 
-            display: flex;
-            align-items: center;
-            height: 2.5rem;
-            width: 100%;
-            padding: 1.5vw 0px;
+        display: grid;
+        grid-template-columns: [col-start] 12% [col-mid] 88% [col-end];
+        grid-template-rows: repeat(3, min-content);
+        align-items: center;
+        grid-row-gap: 1vw;
+        grid-column-gap: .5vw;
+        padding: 1.5vw 0px;
+
+        @include ResponsiveMobileFirst(tab-port) {
+            padding: .8vw 0px;
+        }
+        
 
         &--svg {
+            grid-column: col-start / col-mid;
+            width: 100%;
+            height: 2.5rem;
+            justify-self: start;
             fill: var(--primary-color);
-            width: 10%;
-            justify-self: center;
-            margin-right: 1rem;
-            @include ResponsiveMobileFirst(tab-port) {
-                //width: 3rem;    
-            }
         }
+        
     }
 }
