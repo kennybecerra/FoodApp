@@ -40,12 +40,14 @@
 
         display:grid;
         grid-template-columns: 100%;
-        grid-column-gap: 3.5vw;
-        margin: 0px 3.5vw;
+        grid-column-gap: 5vw;
+        margin: 0px 10vw;
         //width: 90%;
 
         @include ResponsiveMobileFirst(tab-port) {
-            grid-template-columns: repeat(4, minmax(min-content, 1fr));     
+            grid-template-columns: repeat(4, minmax(min-content, 1fr));   
+            grid-column-gap: 3.5vw;
+            margin: 0px 3.5vw;  
         }
     }
 }
