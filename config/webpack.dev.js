@@ -75,7 +75,7 @@ module.exports = {
                 use: {
                   loader: 'html-loader',
                   options: {
-                    attrs: ['img:src', 'source:src']
+                    attrs: ['img:src', 'source:src', 'use:href']
                     }
                 }
             },

@@ -29,4 +29,34 @@
         }
     }
 
+    &__nav {
+        grid-column: col-mid-1 / col-mid-2;
+        grid-row: nav-start / nav-end;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        
+        &__item {
+            flex-basis: auto;
+            flex-grow: 1;
+            border: 3px solid white;
+        }
+
+        &__link {
+            &:link,
+            &:visited {
+                text-decoration: none;
+                color: white;
+            }
+
+            &:hover,
+            &:active {
+                border-bottom: 2px solid var(--primary-color)
+            }
+    
+        }
+    }
+
 }

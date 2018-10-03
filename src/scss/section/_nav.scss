@@ -1,0 +1,24 @@
+.nav {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 10vh;
+
+    border: 3px solid var(--primary-color);
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    background-color: grey;
+    opacity: 0;
+    z-index: 10;
+
+    display: none;
+        
+    &__item {
+        flex-basis: auto;
+        flex-grow: 1;
+        color: var(--primary-color);
+    }
+}
