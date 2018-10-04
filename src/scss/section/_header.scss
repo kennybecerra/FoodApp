@@ -38,10 +38,17 @@
         align-items: center;
         text-align: center;
         
+        @include ResponsiveMobileFirst(tab-port) {
+            width: 60%;
+            margin-left: auto;
+        }
+        
         &__item {
             flex-basis: auto;
-            flex-grow: 1;
-            border: 3px solid white;
+            flex-grow: 0;
+            text-transform: uppercase;
+            padding: 0px .5rem;
+            //border: 3px solid white;
         }
 
         &__link {

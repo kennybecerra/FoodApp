@@ -73,7 +73,7 @@ var myLib = (function() {
 
     function fadeIn(el){
         el.style.opacity = 0;
-        el.style.display = "flex";
+        el.style.display = "block";
       
         (function fade() {
           var val = parseFloat(el.style.opacity) || 0;
@@ -360,11 +360,11 @@ var myLib = (function() {
        console.log('This is my self contained code that is ready');
        myLib.myTest();
 
-        /*
+        
         document.querySelector('.option-1').addEventListener('click', function() {
             myLib.smoothScroll('.cities', 3000);
         });
-        */
+        
 
         
         //myLib.addAnimation('animate-fade-entrance', 'fadeInOnMyScroll', .90);
@@ -389,11 +389,11 @@ var myLib = (function() {
         });
         
 
-        
+        /*
         document.querySelector('.option-1').addEventListener('click', function() {
             myLib.scrollIt(document.getElementById('food'), 1200, 'easeInOutQuint', -100);
         });
-        
+        */
        
         window.addEventListener('scroll', myLib.enableAnimationsother);
         /* 

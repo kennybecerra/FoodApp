@@ -127,3 +127,32 @@
     &--color {color: var( --primary-color);}
 
 }
+
+.paragraph-2 {
+
+    &--light,
+    &--dark,
+    &--color {
+        //font-size:  calc(1.2rem + .67vw);
+        font-size: .9rem;
+        font-weight: 300;
+
+        @include ResponsiveMobileFirst(tab) {
+            font-size:  calc(1.2rem + .67vw);            
+        }
+        @include ResponsiveMobileFirst(tab-port) {
+            font-size:  calc(1.2rem + .67vw);       
+        }
+        @include ResponsiveMobileFirst(desktop) {
+            font-size: calc(2vw - .2rem);         
+        }
+        @include ResponsiveMobileFirst(big-desktop) {
+            font-size: 3.4rem;           
+        }        
+    }
+
+    &--light { color: white;}
+    &--dark { color:var(--font-color);}
+    &--color {color: var( --primary-color);}
+
+}
