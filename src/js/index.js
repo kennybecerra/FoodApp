@@ -48,6 +48,8 @@ var myLib = (function() {
     var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
     var flag = true;
     var originalDisplay = null;
+    var requestID = null;
+    var fadingAllow = true;
 
     // Utility function used by animation function callback
     function addClass(ele,cls) {
@@ -72,29 +74,43 @@ var myLib = (function() {
     }
 
     function fadeIn(el){
-        el.style.opacity = 0;
-        el.style.display = "block";
-      
-        (function fade() {
-          var val = parseFloat(el.style.opacity) || 0;
-          console.log(val);
-          if (!((val += .1) > 1)) {
-            el.style.opacity = val;
-            requestAnimationFrame(fade);
-          } 
-        })();
+
+        if (fadingAllow) {
+            el.style.opacity = 0;
+            el.style.display = "block";
+        
+            (function fade() {
+            var val = parseFloat(el.style.opacity) || 0;
+            console.log(val + " : faded in");
+            if (!((val += .1) > 1)) {
+                el.style.opacity = val;
+                requestID = requestAnimationFrame(fade);
+            }
+            else  {
+                cancelAnimationFrame(requestID);
+            } 
+            })();
+
+        }
     }
 
     function fadeOut(el){
-        el.style.opacity = 1;
-      
-        (function fade() {
-          if ((el.style.opacity -= .1) < 0) {
-            el.style.display = "none";
-          } else {
-            requestAnimationFrame(fade);
-          }
-        })();
+
+        if (fadingAllow) {
+
+            el.style.opacity = 1;
+            //el.style.display = "none";
+            (function fade() {
+              if ((el.style.opacity -= .1) == 0) {
+                el.style.display = "none";
+                cancelAnimationFrame(requestID);
+              } 
+              else {
+                requestID = requestAnimationFrame(fade);
+              }
+            })();
+        }
+    
       }
 
 
@@ -127,6 +143,7 @@ var myLib = (function() {
               console.log("Hellow there")
         },
         scrollIt: function(destination, duration = 200, easing = 'linear', offset, callback) {
+            fadingAllow = false;
 
             const easings = {
               linear(t) {
@@ -175,6 +192,9 @@ var myLib = (function() {
           
             const documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
             const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+
+            offset = typeof offset === "number" ? offset : (parseInt(offset)/100 * windowHeight); 
+
             const destinationOffset = typeof destination === 'number' ? destination : (destination.offsetTop + offset) ;
             const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
           
@@ -193,74 +213,24 @@ var myLib = (function() {
               window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
           
               if (window.pageYOffset === destinationOffsetToScroll) {
+                fadingAllow = true;
                 if (callback) {
                   callback();
                 }
                 return;
               }
-          
               requestAnimationFrame(scroll);
             }
           
             scroll();
-          },
-          enableAnimations: function() {
-
-            for( var itr = 0; itr < animations.length ; itr++) {
-
-                //var elements = document.getElementsByClassName('myonscroll1');
-                var elements = document.getElementsByClassName(animations[itr][1]);
-        
-                //iterate throughout the collection
-                for (var i = 0; i < elements.length; i++){
-                    
-                    //find if the item is inside the viewport and what percetage is inside
-                    var rect = elements[i].getBoundingClientRect();
-                    var percentageShown;
-        
-                    if (rect.bottom  <= 0 || rect.top >= window.innerHeight) {
-                        percentageShown = 0;
-                    } 
-                    else if ( rect.top < 0 && rect.bottom > 0 && rect.bottom <= window.innerHeight) {
-                            percentageShown = rect.bottom / rect.height;
-                    }
-                    else if (rect.top < 0 && rect.bottom > 0 && rect.bottom > window.innerHeight) {
-                        percentageShown = window.innerHeight / rect.height;
-                    }
-                    else if (rect.top >= 0 && rect.bottom > 0  && rect.bottom <= window.innerHeight) {
-                        percentageShown = 100;
-                    }
-                    else if ( rect.top >= 0 && rect.bottom > 0  && rect.bottom > window.innerHeight) {
-                        percentageShown = (window.innerHeight - rect.top)/rect.height;
-                    }
-                    else {
-                        console.log('the item didnt register - start');
-                        console.log("top: " + rect.top + ',  bottom: ' + rect.bottom);
-                        console.log('the item didnt register - end');
-                    }
-        
-                    console.log('the percentage shown is ' + percentageShown.toFixed(2) + ' %');
-                    //console.log(elements[i]);
-        
-                    if (percentageShown >= animations[itr][2]) {
-                        //console.log(hasClass(elements[i], 'myonscroll1'));
-                        //addClass(elements[i], 'animate-footer-text')
-                        //removeClass(elements[i], 'myonscroll1');
-                        addClass(elements[i], animations[itr][0]);
-                        //removeClass(elements[i], AnimateElements[itr]); 
-                        console.log('animation fire');
-                    } 
-                }
-    
-            }
-          },
-          addAnimation: function(object) {
-              animations.push(object);
-          },
-          getAnimations: function() {
-              return [...animations];
-          },
-        enableAnimationsother:  function() {
+        },
+        addAnimation: function(object) {
+            animations.push(object);
+        },
+        getAnimations: function() {
+            return [...animations];
+        },
+        enableAnimations:  function() {
             for( var itr = 0; itr < animations.length ; itr++) {
                 if (animations[itr].check === "inView") {
                     //var elements = document.getElementsByClassName('myonscroll1');
@@ -313,9 +283,10 @@ var myLib = (function() {
                     var threshold = (typeof animations[itr].options.marker === 'number') ? animations[itr].options.marker : window.innerHeight; 
                     var offset = animations[itr].options.offset || 0;
 
+                    // Element has gone over the threshold 
                     if (current > threshold + offset) {
+                        // element has gone below theshold while scrolling down 
                         if (current > lastScrollTop) {
-
                             if (flag) {
                                 var elements = document.getElementsByClassName(animations[itr].className);    
                                 //iterate throughout the collection
@@ -325,23 +296,30 @@ var myLib = (function() {
                                 flag = !flag;
                             }
                         }
+                        // element has gone below theshold while scrolling up 
                         else 
                         {
                             
                         }
                         
                     }  
+                    // element is below threshold
                     else {
+                        // element has gone below theshold while scrolling up 
                         if (current < lastScrollTop) {
                             if (!flag) {
                                 var elements = document.getElementsByClassName(animations[itr].className); 
-                                 
+                                console.log("fade out was called scrolling up"); 
                                 //iterate throughout the collection
                                 for (var i = 0; i < elements.length; i++){
                                     fadeOut(elements[i]);
                                 }
                                 flag = !flag;
                             }
+                        }
+                        // element has gone below theshold while scrolling down 
+                        else {
+
                         }
                     }
 
@@ -360,11 +338,12 @@ var myLib = (function() {
        console.log('This is my self contained code that is ready');
        myLib.myTest();
 
-        
+
+        /*
         document.querySelector('.option-1').addEventListener('click', function() {
             myLib.smoothScroll('.cities', 3000);
         });
-        
+        */        
 
         
         //myLib.addAnimation('animate-fade-entrance', 'fadeInOnMyScroll', .90);
@@ -389,13 +368,13 @@ var myLib = (function() {
         });
         
 
-        /*
+        
         document.querySelector('.option-1').addEventListener('click', function() {
-            myLib.scrollIt(document.getElementById('food'), 1200, 'easeInOutQuint', -100);
+            myLib.scrollIt(document.getElementById('food'), 1200, 'easeInOutQuint', "-10%");
         });
-        */
+        
        
-        window.addEventListener('scroll', myLib.enableAnimationsother);
+        window.addEventListener('scroll', myLib.enableAnimations);
         /* 
         window.addEventListener('scroll', function() {
             var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
