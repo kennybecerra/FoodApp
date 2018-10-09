@@ -81,7 +81,6 @@ var myLib = (function() {
         
             (function fade() {
             var val = parseFloat(el.style.opacity) || 0;
-            console.log(val + " : faded in");
             if (!((val += .1) > 1)) {
                 el.style.opacity = val;
                 requestID = requestAnimationFrame(fade);
@@ -109,6 +108,9 @@ var myLib = (function() {
                 requestID = requestAnimationFrame(fade);
               }
             })();
+        }
+        else {
+            console.log("fading not allowed")
         }
     
       }
@@ -142,8 +144,14 @@ var myLib = (function() {
         myTest: function() {
               console.log("Hellow there")
         },
+        implementFadeOut: function (ele) {
+            fadeOut(ele);
+        }, 
+        implementFadeIn : function(ele) {
+            fadeIn(ele)
+        },
         scrollIt: function(destination, duration = 200, easing = 'linear', offset, callback) {
-            fadingAllow = false;
+            //fadingAllow = false;
 
             const easings = {
               linear(t) {
@@ -213,7 +221,7 @@ var myLib = (function() {
               window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
           
               if (window.pageYOffset === destinationOffsetToScroll) {
-                fadingAllow = true;
+                //fadingAllow = true;
                 if (callback) {
                   callback();
                 }
@@ -279,6 +287,7 @@ var myLib = (function() {
                 }
                 else if (animations[itr].check === "threshold") {
                     var current = window.pageYOffset || document.documentElement.scrollTop;
+                    
 
                     var threshold = (typeof animations[itr].options.marker === 'number') ? animations[itr].options.marker : window.innerHeight; 
                     var offset = animations[itr].options.offset || 0;
@@ -309,12 +318,12 @@ var myLib = (function() {
                         if (current < lastScrollTop) {
                             if (!flag) {
                                 var elements = document.getElementsByClassName(animations[itr].className); 
-                                console.log("fade out was called scrolling up"); 
+                                
                                 //iterate throughout the collection
                                 for (var i = 0; i < elements.length; i++){
                                     fadeOut(elements[i]);
                                 }
-                                flag = !flag;
+                               flag = !flag;
                             }
                         }
                         // element has gone below theshold while scrolling down 
@@ -334,20 +343,7 @@ var myLib = (function() {
  })();
 
  (function(domIsReady) {
-    domIsReady(function() {
-       console.log('This is my self contained code that is ready');
-       myLib.myTest();
-
-
-        /*
-        document.querySelector('.option-1').addEventListener('click', function() {
-            myLib.smoothScroll('.cities', 3000);
-        });
-        */        
-
-        
-        //myLib.addAnimation('animate-fade-entrance', 'fadeInOnMyScroll', .90);
-        
+    domIsReady(function() {        
         myLib.addAnimation({
             className: "fadeInOnMyScroll",
             animation: "animate-fade-entrance",
@@ -367,41 +363,43 @@ var myLib = (function() {
             }
         });
         
-
         
         document.querySelector('.option-1').addEventListener('click', function() {
-            myLib.scrollIt(document.getElementById('food'), 1200, 'easeInOutQuint', "-10%");
+            myLib.scrollIt(document.getElementById('works'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+        document.querySelector('.option-2').addEventListener('click', function() {
+            myLib.scrollIt(document.getElementById('cities'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+        document.querySelector('.option-3').addEventListener('click', function() {
+            myLib.scrollIt(document.getElementById('plans'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+        document.querySelector('.option-4').addEventListener('click', function() {
+            myLib.scrollIt(document.getElementById('signUp'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+
+
+        document.querySelector('.option-5').addEventListener('click', function() {
+            myLib.scrollIt(document.getElementById('works'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+        document.querySelector('.option-6').addEventListener('click', function() {
+            myLib.scrollIt(document.getElementById('cities'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+        document.querySelector('.option-7').addEventListener('click', function() {
+            myLib.scrollIt(document.getElementById('plans'), 1200, 'easeInOutQuint', "-10%");
+        });
+
+        document.querySelector('.option-8').addEventListener('click', function() {
+           myLib.scrollIt(document.getElementById('signUp'), 1200, 'easeInOutQuint', "-10%");
         });
         
        
         window.addEventListener('scroll', myLib.enableAnimations);
-        /* 
-        window.addEventListener('scroll', function() {
-            var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-            console.log(`Yoffset is ${st} : window inner height is ${window.innerHeight}`);
-        });
-        */
-
-        /*
-       var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-       // element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-       
-       window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
-          var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-          if (st > lastScrollTop){
-             console.log("down scrolling")
-          } else {
-            console.log("up scrolling")
-          }
-          lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-       }, false);
-       */
-       /*
-      window.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
-      console.log(`Inner height is ${window.innerHeight} : clientHeight is ${window.clientHeight}`);
-        }, false);
-    */
-
 
     });
  })(domIsReady);

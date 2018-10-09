@@ -48,9 +48,16 @@
             flex-grow: 0;
             text-transform: uppercase;
             padding: 0px .5rem;
+            color: white;
             //border: 3px solid white;
-        }
 
+            &:hover {
+                border-bottom: 2px solid var(--primary-color);
+                cursor: pointer;
+                
+            }
+        }
+        /*
         &__link {
             &:link,
             &:visited {
@@ -64,6 +71,7 @@
             }
     
         }
+        */
     }
 
 }

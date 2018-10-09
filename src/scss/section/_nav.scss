@@ -28,10 +28,16 @@
             flex-grow: 0;
             text-transform: uppercase;
             padding: 0px .5rem;
-            color: var(--font-color-grey);
+            color: var(--font-color);
             //border: 3px solid white;
+
+            &:hover {
+                border-bottom: 2px solid var(--primary-color);
+                cursor: pointer;
+            }
         }
     
+        /*
         &--link {
             &:link,
             &:visited {
@@ -45,6 +51,7 @@
             }
     
         }
+        */
     }
 }
 
