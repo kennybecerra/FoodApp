@@ -1,17 +1,22 @@
 .about {
     grid-column: col-start / col-end;
-    grid-row: section-start 1 / section-end 1;
+    // grid-row: section-start 1 / section-end 1;
+    grid-row: about-start / about-end;
+    height: 100%;
     align-self: center;
 
     display: grid;
     grid-template-columns: [col-start] 100% [col-end];
-    grid-template-rows: [header-start] 40% [header-end body-start] 60% [body-end];
+    grid-template-rows: [header-start] 12% [header-end body-start] 88% [body-end];
     grid-row-gap: 2vw;
     justify-content: center;
 
-    padding: 5vw 0px 5vw 0px;
+    padding: 5vw 0px;
+
     @include ResponsiveMobileFirst(tab-port) {
-       
+        padding: 2vw 0px;
+       grid-row-gap: 1vw;
+       grid-template-rows: [header-start] 30% [header-end body-start] 70% [body-end];
     }
 
     &__header {

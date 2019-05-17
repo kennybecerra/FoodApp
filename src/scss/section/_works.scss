@@ -1,6 +1,6 @@
 .works {
     grid-column: col-start / col-end;
-    grid-row: section-start 3 / section-end 3;
+    grid-row: works-start / works-end;
     //margin: 4vw 0px;
     padding: 4vw 0px;
     background-color: #f4f4f4;
@@ -89,45 +89,41 @@
 }
 
 .phone {
-
-    position: relative;
-    //border: 5px solid red;
-    width: 50%;
+    height: 100%;
 
     &__figure {
-
-        width:100%;
-       
-        //border: 3px solid orange;
+        position: relative;
+        width: auto;
+        height: auto;
+    
 
         &--image {
             //border: 3px solid green;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-    }
-
-    &__figure2 {
-
-        position: absolute;
-        top: 10.5%;
-        left: 15.5%;
-        right: 11.5%;
-        bottom: 12%;
-        border-radius: 5px;
-
-        //border:3px dotted red;
-        overflow: hidden;
-
-
-        &--image2 {
-            //border: 3px solid green;
             width: auto;
-            height: 100%;
-            transform: translateX(-25%);
+            height: 300px;
+            object-fit: cover;
+
+            @include ResponsiveMobileFirst(desktop) {
+                height: 350px;
+            }
+        }
+
+        &__container {
+
+            position: absolute;
+            top: 10.5%;
+            left: 15%;
+            right: 11.5%;
+            bottom: 12%;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+
+            &--image {
+                height: 100%;
+                object-fit: cover;
+            }
         }
     }
-
-
 }

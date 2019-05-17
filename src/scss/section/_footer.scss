@@ -1,6 +1,6 @@
 .footer {
     grid-column: col-start / col-end;
-    grid-row: section-start 8 / section-end 8;
+    grid-row: footer-start / footer-end;
     align-self: center;
 
     background-color: var(--background-color);

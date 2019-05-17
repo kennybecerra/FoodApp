@@ -1,18 +1,18 @@
 .cities {
     grid-column: col-start / col-end;
-    grid-row: section-start 4 / section-end 4;
+    grid-row: cities-start / cities-end;
     align-self: center;
 
     display: grid;
     grid-template-columns: [col-start] 100% [col-end];
-    grid-template-rows: [header-start] 20% [header-end body-start] min-content [body-end];
+    grid-template-rows: [header-start] 5% [header-end body-start] 1fr [body-end];
     grid-row-gap: 2rem;
     justify-content: center;
 
     padding: 5vw 0px 7vw 0px;
 
     @include ResponsiveMobileFirst(tab-port) {
-       
+        grid-template-rows: [header-start] 20% [header-end body-start] 1fr [body-end];
     }
 
     &__body {

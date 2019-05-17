@@ -10,6 +10,7 @@
     justify-content: space-evenly;
     width: 90%;
     text-align: center;
+    height: 100%;
 
 
     @include ResponsiveMobileFirst(tab-port) {
@@ -24,13 +25,13 @@
         margin: 4vw 0px;
 
         @include ResponsiveMobileFirst(tab) {
-            margin: 2rem 0px;
+            margin: 2vw 0px;
         }
         @include ResponsiveMobileFirst(tab-port) {
-            margin: 2.5rem 0px;
+            margin: 1rem 0px;
         }
         @include ResponsiveMobileFirst(desktop) {
-            margin: 3rem 0px;
+            margin: 1rem 0px;
         }
         @include ResponsiveMobileFirst(big-desktop) {
                       
