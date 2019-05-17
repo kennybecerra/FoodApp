@@ -18,7 +18,7 @@
 
     padding: 5vw 0px 7vw 0px;
     @include ResponsiveMobileFirst(tab-port) {
-        grid-template-rows: [header-start] 20% [header-end body-start] 80% [body-end];
+        grid-template-rows: [header-start] 30% [header-end body-start] 70% [body-end];
     }
 
     &__body {

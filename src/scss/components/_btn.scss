@@ -43,8 +43,9 @@
     }
 
     &--1:link,
-    &--1:visited {
-        
+    &--1:visited,
+    &--1:focus {
+        outline: none;
     }
 
     &--1:hover,
@@ -53,8 +54,9 @@
     }
 
     &--2:link,
-    &--2:visited {
-        
+    &--2:visited,
+    &--2:focus {
+        outline: none;
     }
 
     &--2:hover,

@@ -6,13 +6,13 @@
 
     display: grid;
     grid-template-columns: [col-start] 100% [col-end];
-    grid-template-rows: [header-start] 20% [header-end body-start] 80% [body-end];
+    grid-template-rows: [header-start] 10% [header-end body-start] 90% [body-end];
     //grid-row-gap: 2rem;
     justify-content: center;
 
-    padding: 5vw 0px 7vw 0px;
+    padding: 5vw 0px 5vw 0px;
     @include ResponsiveMobileFirst(tab-port) {
-       
+       grid-template-rows: [header-start] 20% [header-end body-start] 80% [body-end];
     }
 
     &__body {
@@ -24,7 +24,7 @@
         grid-template-columns: 100%;
         grid-column-gap: 5vw;
         grid-row-gap: 2vw;
-        padding: 2rem 0px;;
+        padding: 1rem 0px;;
         //margin: 0px 5vw;
         justify-content: center;
         width: 70%;

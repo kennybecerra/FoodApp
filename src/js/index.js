@@ -381,7 +381,6 @@ var myLib = (function() {
         });
 
 
-
         document.querySelector('.option-5').addEventListener('click', function() {
             myLib.scrollIt(document.getElementById('works'), 1200, 'easeInOutQuint', "-10%");
         });

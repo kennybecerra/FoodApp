@@ -1,19 +1,23 @@
 .footer {
+    height: 100%;
     grid-column: col-start / col-end;
     grid-row: footer-start / footer-end;
-    align-self: center;
 
     background-color: var(--background-color);
 
     display: grid;
     grid-template-columns: [col-start] 50% [col-mid] 50% [col-end];
     grid-template-rows: [options-start] 50% [options-end media-start] 50% [media-end];
-    grid-row-gap: 2rem;
     justify-items: center;
+    align-items: center;
 
-    padding: 3vw 0px;
+    padding: 2vw 0px;
     @include ResponsiveMobileFirst(tab-port) {
-       
+       grid-row-gap: 1rem;
+    }
+
+    @include ResponsiveMobileFirst(desktop) {
+       grid-row-gap: 2rem;
     }
 
     &__options {
@@ -46,7 +50,7 @@
         grid-column-gap: 1.5vw;
         justify-content: center;
         justify-items: center;
-        align-items: start;
+        align-items: center;
         fill: var(--font-color-grey);
 
         &--icon-1,
