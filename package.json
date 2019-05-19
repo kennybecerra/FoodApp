@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config=config/webpack.dev.js --open",
     "dev": "webpack --config=config/webpack.dev.js --mode development",
-    "prod": "webpack --config=config/webpack.prod.js --mode production"
+    "prod": "webpack --config=config/webpack.prod.js --mode production",
+    "host": "webpack --config=config/webpack.host.js --mode production"
   },
   "browserslist": [
     "last 5 versions"
@@ -34,6 +35,7 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
+    "animejs": "^3.0.1",
     "babel-polyfill": "^6.26.0",
     "scrollmagic": "^2.0.6",
     "smooth-scroll": "^16.0.3"

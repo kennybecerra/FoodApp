@@ -13,6 +13,12 @@
         animation: fade-in-bottom 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     }
 
+    .animate-fade-toggle {
+        visibility: visible!important;
+        z-index: 10!important;
+        opacity: 1!important;
+    }
+
     .fadeInOnMyScroll {
         opacity: 0;
     }
@@ -29,9 +35,7 @@
         opacity: 0;
     }
 
-    .fadeOutOnThreshold {
-        opacity: 1;
-    }
+
 
   
   
@@ -156,8 +160,14 @@
   }
   
   @keyframes Appear {
-    0% { opacity: 0;}
-    100% { opacity: 1;}
+    0% { 
+      opacity: 0;
+      display: none    
+    }
+    100% { 
+      opacity: 1;
+      display: block;
+    }
   }
 
   @keyframes Disappear {
